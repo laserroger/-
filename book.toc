@@ -1,0 +1,4 @@
+\contentsline {chapter}{摘要}{i}{chapter*.1}
+\contentsline {chapter}{致谢}{ii}{chapter*.2}
+\contentsline {chapter}{\numberline {1}经典格点系统}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Ising model}{1}{section.1.1}

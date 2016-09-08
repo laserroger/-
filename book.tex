@@ -1,0 +1,179 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+\documentclass[12pt,openany]{book}
+\usepackage[Lenny]{fncychap}
+
+
+
+% For archive pdf output forcing
+%\pdfoutput=1
+% \usepackage{jheppub}
+ % For figures
+\usepackage{graphicx}
+\usepackage{youngtab}
+\usepackage[centertags]{amsmath}
+\usepackage{amssymb,amsthm,amsfonts,mathrsfs,bm,bbm}
+\usepackage{ccaption}
+\usepackage[usenames]{color}
+\usepackage{tikz}
+\usepackage{xeCJK}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage[mathscr]{eucal}
+
+
+%For table of contents
+\usepackage{tocloft}
+\setlength{\cftsecindent}{1.5em}
+\setlength{\cftsubsecindent}{3.8em}
+\setlength{\cftsubsubsecindent}{7.0em}
+\setlength{\cftpartnumwidth}{1.5em}
+\setlength{\cftsecnumwidth}{2.3em}
+\setlength{\cftsubsecnumwidth}{3.2em}
+\setlength{\cftsubsubsecnumwidth}{4.1em}
+
+\usepackage[
+      colorlinks=true,
+      linkcolor=blue,
+      urlcolor=blue,
+      filecolor=black,
+      citecolor=red,
+      pdfstartview=FitV,
+      pdftitle={Holographic entanglement entropy},
+        pdfauthor={Mukund Rangamani, Tadashi Takayanagi}
+      ]{hyperref}
+
+
+\usepackage{rotating}
+% >> Only for drafts! <<
+% \usepackage[notref,notcite]{showkeys}
+
+
+% ----------------------------------------------------------------
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+% ----------------------------------------------------------------
+
+% changes equation numbering to section.eqno
+\makeatletter
+\@addtoreset{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%nn
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\bfseries}}
+
+% Change the format of a figure caption
+% Makes figure number bold, indents and uses different font for caption.
+  \captionnamefont{\bfseries}
+  \captiontitlefont{\small\sffamily}
+  \captiondelim{: }
+  \hangcaption
+  \renewcommand{\figurename}{Figure}
+
+% This defines an appendix counter....\Appendix....if not using Roman
+% section headings then remove the last line that sets equation numbers
+\newcommand{\startappendix}{
+\setcounter{section}{0}
+\renewcommand{\thesection}{\Alph{section}}}
+
+\newcommand{\Appendix}[1]{
+\refstepcounter{section}
+\vspace{10mm}
+\pagebreak[3]
+\setcounter{equation}{0}
+\begin{flushleft}
+{\large\bf Appendix \thesection: #1}
+\end{flushleft}}
+
+% spacing between lines and paragraphs
+\def\baselinestretch{1.2}
+\parskip 6 pt
+
+% set margins to be optimal
+\marginparwidth 0pt
+
+
+\oddsidemargin  0pt
+\evensidemargin  0pt
+\marginparsep 0pt
+\topmargin   -0.5in
+\textwidth   6.5in
+\textheight  9.0 in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input entangle-macros
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{{\bf \Huge 格点系统的物理与计算}}
+
+\author{\normalsize
+Laserdog}
+
+\begin{document}
+
+\setlength{\baselineskip}{16pt}
+\begin{titlepage}
+\maketitle
+% \begin{picture}(0,0)(0,0)
+% \end{picture}
+% \vspace{-36pt}
+
+%Abstract
+% \begin{abstract}
+%  Synopsis for the book on holographic entanglement entropy.
+%  \end{abstract}
+\thispagestyle{empty}
+\setcounter{page}{0}
+\end{titlepage}
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+%______________________________________
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+
+
+\chapter{摘要}
+
+We review the developments in the past decade on holographic entanglement entropy, a subject that has garnered much attention owing to its potential to teach us about the emergence of spacetime in holography. 
+We provide  an introduction to the concept of entanglement entropy in quantum field theories, review the holographic proposals for computing the same, providing some justification for where these proposals arise from in the first two parts. The final part addresses recent developments linking entanglement and geometry. We provide an overview of the various arguments and technical developments that teach us how to use field theory entanglement to detect geometry. Our discussion is by design eclectic; we have chosen to focus on developments that appear to us most promising for further insights into the holographic map. 
+
+This is a preliminary draft of a few chapters of a book which will appear sometime in the near future, to be published by Springer, as part of their Lecture Notes in Physics series. The book in addition contains a discussion of application of holographic ideas to computation of entanglement entropy in strongly coupled field theories, and discussion of tensor networks and holography, which we have chosen to exclude from the current manuscript. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{致谢}
+
+We have been extremely fortunate to benefit from the wisdom and deep physical intuition of our wonderful collaborators  Veronika Hubeny and Shinsei Ryu who played a pivotal role in helping us develop the basic picture relating quantum entanglement and holography. The importance of their role in shaping the story of holography entanglement entropy cannot be overstated. 
+
+We have also enjoyed many excellent collaborations in our explorations over the past decade on this subject: thanks to Tatsuo  Azeyanagi, Jyotirmoy Bhattacharya, Pawel Caputa, Sumit Das, Xi Dong, Mitsutoshi Fujita, Simon Gentle, Kanato Goto, Thomas Hartman, Felix Haehl, Song He,  Matthew Headrick, Andreas Karch, Albion Lawrence, Aitor Lewkowycz, Wei Li, Don Marolf, Masamichi Miyaji, Ali Mollabashi, K. Narayan, Tatsuma Nishioka, Masahiro Nozaki, Tokiro  Numasawa, Noriaki  Ogawa, Eric Perlmutter, Max Rota, Noburo Shiba, Joan Simon, Andrius  Stikonas, Moshe Rozali, Sandip Trivedi, Erik Tonni, Henry Maxfield, Tomonori Ugajin, Alexandre Vincart-Emard, Kento Watanabe, Xueda Wen, and Anson Wong for many fun discussions and for helping us understand various aspects of the story we are about to relate. An especial thanks to Max Rota for his useful comments on a draft of this manuscript.
+
+We would especially like to single out the influence of Horacio Casini, Matt Headrick, Don Marolf, Rob Myers, and Mark Van Raamsdonk whose perspicacious insights have contributed immensely to our understanding of entanglement and holography. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage 
+\tableofcontents
+\cleardoublepage
+
+\mainmatter
+
+\chapter{经典格点系统}
+
+我们为啥要考虑格点系统呢？其实，这个问题的答案在我们学习统计物理的时候就有线索了。
+
+\section{Ising model}
+
+在固体中，我们通常会遇到晶格结构，这些晶格结构很大程度上促使我们把系统想象为处于格点上。不需要严格的量子力学的情况下我们实际上就已经接触过这种描述了：Ising model。考虑一个晶格，上面格点标号$i$。每一个格点上面有一个变量$\sigma_i$，只有两个分立的取值$\sigma_i=\pm1$。Ising model认为，系统的Hamiltonian可以很好地描述为
+\begin{align}
+H=-J\sum_{\langle i,j\rangle}\sigma_i\sigma_j
+\end{align}
+
+\end{document}
