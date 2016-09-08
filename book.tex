@@ -17,6 +17,7 @@
 \usepackage[usenames]{color}
 \usepackage{tikz}
 \usepackage{xeCJK}
+\usepackage{url}
 \usetikzlibrary{decorations.pathmorphing}
 \usepackage[mathscr]{eucal}
 
@@ -141,21 +142,13 @@ Laserdog}
 
 \chapter{摘要}
 
-We review the developments in the past decade on holographic entanglement entropy, a subject that has garnered much attention owing to its potential to teach us about the emergence of spacetime in holography. 
-We provide  an introduction to the concept of entanglement entropy in quantum field theories, review the holographic proposals for computing the same, providing some justification for where these proposals arise from in the first two parts. The final part addresses recent developments linking entanglement and geometry. We provide an overview of the various arguments and technical developments that teach us how to use field theory entanglement to detect geometry. Our discussion is by design eclectic; we have chosen to focus on developments that appear to us most promising for further insights into the holographic map. 
-
-This is a preliminary draft of a few chapters of a book which will appear sometime in the near future, to be published by Springer, as part of their Lecture Notes in Physics series. The book in addition contains a discussion of application of holographic ideas to computation of entanglement entropy in strongly coupled field theories, and discussion of tensor networks and holography, which we have chosen to exclude from the current manuscript. 
-
+本讲义参考Sacha Friedli和Yvan Velenik的公开教材\href{http://www.unige.ch/math/folks/velenik/smbook/}{Statistical Mechanics of Lattice Systems: a Concrete Mathematical Introduction}和kwant的\href{https://downloads.kwant-project.org/doc/kwant-doc-1.1.1.pdf}{官方文档制成}。讲义主要讲格点系统的物理模型，以及量子格点模型的各种问题的基于kwant程序包的计算。当前版本为\today 版。本讲义的目的是一门可能会作为北京大学-普物教学中心的非正式性质的课程，其传承自校长\footnote{\href{https://www.researchgate.net/profile/Heming_Wang}{王贺明}}时期
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{致谢}
 
-We have been extremely fortunate to benefit from the wisdom and deep physical intuition of our wonderful collaborators  Veronika Hubeny and Shinsei Ryu who played a pivotal role in helping us develop the basic picture relating quantum entanglement and holography. The importance of their role in shaping the story of holography entanglement entropy cannot be overstated. 
 
-We have also enjoyed many excellent collaborations in our explorations over the past decade on this subject: thanks to Tatsuo  Azeyanagi, Jyotirmoy Bhattacharya, Pawel Caputa, Sumit Das, Xi Dong, Mitsutoshi Fujita, Simon Gentle, Kanato Goto, Thomas Hartman, Felix Haehl, Song He,  Matthew Headrick, Andreas Karch, Albion Lawrence, Aitor Lewkowycz, Wei Li, Don Marolf, Masamichi Miyaji, Ali Mollabashi, K. Narayan, Tatsuma Nishioka, Masahiro Nozaki, Tokiro  Numasawa, Noriaki  Ogawa, Eric Perlmutter, Max Rota, Noburo Shiba, Joan Simon, Andrius  Stikonas, Moshe Rozali, Sandip Trivedi, Erik Tonni, Henry Maxfield, Tomonori Ugajin, Alexandre Vincart-Emard, Kento Watanabe, Xueda Wen, and Anson Wong for many fun discussions and for helping us understand various aspects of the story we are about to relate. An especial thanks to Max Rota for his useful comments on a draft of this manuscript.
-
-We would especially like to single out the influence of Horacio Casini, Matt Headrick, Don Marolf, Rob Myers, and Mark Van Raamsdonk whose perspicacious insights have contributed immensely to our understanding of entanglement and holography. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -167,7 +160,18 @@ We would especially like to single out the influence of Horacio Casini, Matt Hea
 
 \chapter{经典格点系统}
 
-我们为啥要考虑格点系统呢？其实，这个问题的答案在我们学习统计物理的时候就有线索了。
+我们为啥要考虑格点系统呢？其实，这个问题的答案在我们学习统计物理的时候就有线索了。我们处理气体问题的时候，计算配分函数最大的难点在于对坐标的积分$\int d^{dN}e^{-\beta V(q_{1,x_1},\cdots,q_{N,x_d})}$，因为大多数形式的相互作用$V(q_{1,x_1},\cdots,q_{N,x_d})$都存在无法积分得到精确结果，甚至数值计算结果的情况。而如果把体系格点化，就会极大地简化至少数值计算的难度。下面我们来看一个格点气体的问题
+
+如图\ref{Fig1}，所有的格点的位置再也不是$\mathbb{R}^d$空间了，而是其中的不连续子集$\mathbb{Z}^d$：
+\[\mathbb{Z}^d\overset{\text{def}}{\equiv}\{i=(i_1,\cdots,i_d)\in\mathbb{R}^d: i_k\in\mathbb{Z}, k\in\{1,\cdots,d\}\} \]
+不考虑动量部分的话，配分函数可以只写成坐标——如今就是离散的点——的函数，求和总比积分要数值上明确的多。气体模型一般还是要讲究合理性，比如我们认为粒子距离很近的时候会排斥彼此——其可以通过认定每个格点上只能有$0, 1$个粒子来实现，或者每个格点上的粒子数量$n_{\bf i}$会给体系带来彼此相互作用的能量$\frac{1}{2}n_{\bf i}(n_{\bf i}-1)U$来描述。打比方说我们这里就用简单的$0, 1$个粒子来描述。我们还要描述长程的相互作用——虽然很弱。就可以写成$V=\sum_{\bf i, j}V_{\bf i, j}$这种形式。这种形式对于粒子数很少的情况很容易进行数值计算。
+
+\begin{figure}\centering
+\includegraphics[width = .3\textwidth]{Fig1.pdf}
+\caption{格点，黑色为占据}\label{Fig1}
+\end{figure}
+
+
 
 \section{Ising model}
 
